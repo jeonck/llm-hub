@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import LearningPath from './components/LearningPath'
 import ResourceCard from './components/ResourceCard'
 import Footer from './components/Footer'
+import LLMBasics from './pages/LLMBasics'
 
-function App() {
+function HomePage() {
   const [currentSection, setCurrentSection] = useState('home')
 
   const resources = [
@@ -14,7 +16,8 @@ function App() {
       description: "거대 언어 모델의 정의, 작동 원리, 발전 역사를 쉽게 이해하기",
       category: "beginner",
       icon: "🧠",
-      link: "#basics"
+      link: "/llm-basics",
+      isRoute: true
     },
     {
       title: "주요 LLM 모델 비교",
@@ -120,6 +123,17 @@ function App() {
 
       <Footer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/llm-basics" element={<LLMBasics />} />
+      </Routes>
+    </Router>
   )
 }
 

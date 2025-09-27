@@ -1,4 +1,6 @@
-function ResourceCard({ title, description, category, icon, link, delay = 0 }) {
+import { Link } from 'react-router-dom'
+
+function ResourceCard({ title, description, category, icon, link, delay = 0, isRoute = false }) {
   const getCategoryColor = (cat) => {
     switch (cat) {
       case 'beginner': return 'from-green-400 to-blue-500'
@@ -40,15 +42,29 @@ function ResourceCard({ title, description, category, icon, link, delay = 0 }) {
       </p>
 
       <div className="flex justify-between items-center">
-        <a
-          href={link}
-          className="text-blue-400 hover:text-blue-300 text-sm font-semibold flex items-center space-x-2 group-hover:translate-x-1 transition-transform"
-        >
-          <span>자세히 보기</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
+        {isRoute ? (
+          <Link
+            to={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 text-sm font-semibold flex items-center space-x-2 group-hover:translate-x-1 transition-transform"
+          >
+            <span>새 탭에서 열기</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
+        ) : (
+          <a
+            href={link}
+            className="text-blue-400 hover:text-blue-300 text-sm font-semibold flex items-center space-x-2 group-hover:translate-x-1 transition-transform"
+          >
+            <span>자세히 보기</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        )}
       </div>
     </div>
   )

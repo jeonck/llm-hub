@@ -6,6 +6,7 @@ import LearningPath from './components/LearningPath'
 import ResourceCard from './components/ResourceCard'
 import Footer from './components/Footer'
 import LLMBasics from './pages/LLMBasics'
+import PromptEngineering from './pages/PromptEngineering'
 
 function HomePage() {
   const [currentSection, setCurrentSection] = useState('home')
@@ -31,7 +32,8 @@ function HomePage() {
       description: "효과적인 프롬프트 작성법과 고급 기법들",
       category: "intermediate",
       icon: "✍️",
-      link: "#prompting"
+      link: "/prompt-engineering",
+      isRoute: true
     },
     {
       title: "직무별 활용 가이드",
@@ -132,6 +134,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/llm-basics" element={<LLMBasics />} />
+        <Route path="/prompt-engineering" element={<PromptEngineering />} />
       </Routes>
     </Router>
   )

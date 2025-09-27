@@ -128,7 +128,7 @@ function HomePage() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/llm-hub">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/llm-basics" element={<LLMBasics />} />

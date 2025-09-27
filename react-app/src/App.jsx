@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import LearningPath from './components/LearningPath'
@@ -128,7 +128,7 @@ function HomePage() {
 
 function App() {
   return (
-    <Router basename="/llm-hub">
+    <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/llm-basics" element={<LLMBasics />} />

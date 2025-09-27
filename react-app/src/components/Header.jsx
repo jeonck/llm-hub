@@ -10,6 +10,20 @@ function Header({ currentSection, setCurrentSection }) {
     { id: 'community', label: '커뮤니티', href: '#community' }
   ]
 
+  const handleNavClick = (e, item) => {
+    e.preventDefault()
+    setCurrentSection(item.id)
+
+    // 부드러운 스크롤로 해당 섹션으로 이동
+    const element = document.querySelector(item.href)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700">
       <div className="max-w-6xl mx-auto px-4">
@@ -26,8 +40,8 @@ function Header({ currentSection, setCurrentSection }) {
               <a
                 key={item.id}
                 href={item.href}
-                onClick={() => setCurrentSection(item.id)}
-                className={`text-sm font-medium transition-colors ${
+                onClick={(e) => handleNavClick(e, item)}
+                className={`text-sm font-medium transition-colors cursor-pointer ${
                   currentSection === item.id
                     ? 'text-blue-400'
                     : 'text-gray-300 hover:text-white'
@@ -57,11 +71,11 @@ function Header({ currentSection, setCurrentSection }) {
                 <a
                   key={item.id}
                   href={item.href}
-                  onClick={() => {
-                    setCurrentSection(item.id)
+                  onClick={(e) => {
+                    handleNavClick(e, item)
                     setIsMenuOpen(false)
                   }}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-sm font-medium transition-colors cursor-pointer ${
                     currentSection === item.id
                       ? 'text-blue-400'
                       : 'text-gray-300 hover:text-white'

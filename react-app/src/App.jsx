@@ -7,6 +7,7 @@ import ResourceCard from './components/ResourceCard'
 import Footer from './components/Footer'
 import LLMBasics from './pages/LLMBasics'
 import PromptEngineering from './pages/PromptEngineering'
+import LLMDevelopment from './pages/LLMDevelopment'
 
 function HomePage() {
   const [currentSection, setCurrentSection] = useState('home')
@@ -47,7 +48,8 @@ function HomePage() {
       description: "API 연동부터 RAG까지, 개발자를 위한 가이드",
       category: "advanced",
       icon: "⚙️",
-      link: "#development"
+      link: "/llm-development",
+      isRoute: true
     },
     {
       title: "커뮤니티 & Q&A",
@@ -135,6 +137,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/llm-basics" element={<LLMBasics />} />
         <Route path="/prompt-engineering" element={<PromptEngineering />} />
+        <Route path="/llm-development" element={<LLMDevelopment />} />
       </Routes>
     </Router>
   )

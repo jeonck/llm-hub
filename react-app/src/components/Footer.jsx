@@ -2,11 +2,24 @@ function Footer() {
   const currentYear = new Date().getFullYear()
 
   const quickLinks = [
-    { label: 'LLM 기초', href: '#basics' },
-    { label: '프롬프트 가이드', href: '#prompting' },
-    { label: '모델 비교', href: '#models' },
-    { label: '커뮤니티', href: '#community' }
+    { label: '홈', href: '#home' },
+    { label: '학습 로드맵', href: '#learning-path' },
+    { label: '주요 콘텐츠', href: '#resources' },
+    { label: '주요 특징', href: '#features' }
   ]
+
+  const handleQuickLinkClick = (e, href) => {
+    e.preventDefault()
+
+    // 부드러운 스크롤로 해당 섹션으로 이동
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
 
   const resources = [
     { label: 'OpenAI ChatGPT', href: 'https://chat.openai.com' },
@@ -43,7 +56,8 @@ function Footer() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-white text-sm transition-colors"
+                    onClick={(e) => handleQuickLinkClick(e, link.href)}
+                    className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer"
                   >
                     {link.label}
                   </a>

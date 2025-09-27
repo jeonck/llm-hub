@@ -1,4 +1,17 @@
 function Hero() {
+  const handleScrollTo = (e, targetId) => {
+    e.preventDefault()
+
+    // 부드러운 스크롤로 해당 섹션으로 이동
+    const element = document.querySelector(targetId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
   return (
     <section id="home" className="pt-32 pb-20 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -21,13 +34,15 @@ function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#learning-path"
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              onClick={(e) => handleScrollTo(e, '#learning-path')}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 cursor-pointer"
             >
               🚀 학습 시작하기
             </a>
             <a
               href="#resources"
-              className="border border-blue-400 text-blue-400 px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300"
+              onClick={(e) => handleScrollTo(e, '#resources')}
+              className="border border-blue-400 text-blue-400 px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300 cursor-pointer"
             >
               📚 리소스 둘러보기
             </a>
